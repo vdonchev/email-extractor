@@ -1,12 +1,16 @@
 # Email Extractor
 
-Extract valid email addresses from a string or array of strings.
-With a few helper methods like sortAsc/sortDesc, unique,
-filterInclude/filterExclude, lowercase/uppercase included.
+Extract in `array` ALL valid email addresses from a `string` or `string array`.
+This library also includes a few helper methods to modify the output array.
 
 ## Installation
 
 `composer require donchev/email-extractor`
+
+## Object Instantiation
+`EmailExtractor` object accept 2 optional parameters in it's `__constructor()` method:
+* `array|null $filter` An array of words used for filtering matched emails. If not passed to the constructor, an empty `array` is used when/if `filterAsc()` or `filterDesc()` is called.
+* `string|null $regex` A valid regex that match an email address. If not passed to the constructor, the default build-in regex will be used. **(NOTE: It is recommended to use the build-in regex, except if you know what you are doing.)**
 
 ## Simple Usage
 
@@ -50,33 +54,32 @@ $emails = $extractor
 ```
 array (size=2)
   0 => string 'sample@gmail.com' (length=16)
-  1 => string 'allen@yaholo.com' (length=16)
+  1 => string 'allen@yahoo.com' (length=16)
 ```
 
 ## Method chaining design pattern
 
-**Email Exporter** library uses method chaining. You should follow these simple rules:
+**Email Exporter** library uses method chaining. You should follow one simple rule:
 
-- "extract()" OR "extractAll()" method SHOULD be called first.
-- "export()" method SHOULD be called last.
+- `extract()` OR `extractAll()` method **SHOULD** be called first.
 
-_Otherwise EmailExtractorException will be thrown._
+_Otherwise, `EmailExtractorException` will be thrown._
 
-## Extractor helper methods
+## Helper methods
 
-There are a few helper methods build-in. These can be called after **extract()/extractAll()** and before **export()**.
+There are a few helper methods build-in. These can be called after `extract()`/`extractAll()`.
 
 #### Methods
 
-| Option Name       | Argument                                        | Description                                                                                                                                                                                            |
-|-------------------|-------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ->unique()        |                                                 | Remove all duplicates from the extracted emails. _[case sensitive]_                                                                                                                                    |
-| ->lower()         |                                                 | Convert all extracted emails to lowercase.                                                                                                                                                             |
-| ->upper()         |                                                 | Convert all extracted emails to uppercase.                                                                                                                                                             |
-| ->filterExclude() | _(optional)_ array of strings to filter against | It excludes from the list all emails that are matched against the filter array. If array is not passed as argument it checks if there is filter array passed to the constructor. _[case sensitive]_    |
-| ->filterInclude() | _(optional)_ array of strings to filter against | It excludes from the list all emails that are not matched against the filter array. If array is not passed as argument it checks if there is filter array passed to the constructor. _[case sensitive] |
-| ->sortAsc()       |                                                 | Sort extracted emails list alphabetically (ASC)                                                                                                                                                        |
-| ->sortDesc()      |                                                 | Sort extracted emails list alphabetically (DESC)                                                                                                                                                       |
+| Option Name       | Argument                                        | Description                                                                                                                                                                                             |
+|-------------------|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `unique() `       |                                                 | Remove all duplicates from the extracted emails. _[case sensitive]_                                                                                                                                     |
+| `lower()`         |                                                 | Convert all extracted emails to lowercase.                                                                                                                                                              |
+| `upper()`         |                                                 | Convert all extracted emails to uppercase.                                                                                                                                                              |
+| `filterExclude()` | _(optional)_ array of strings to filter against | It excludes from the list all emails that are matched against the filter array. If array is not passed as argument it checks if there is filter array passed to the constructor. _[case sensitive]_     |
+| `filterInclude()` | _(optional)_ array of strings to filter against | It excludes from the list all emails that are not matched against the filter array. If array is not passed as argument it checks if there is filter array passed to the constructor. _[case sensitive]_ |
+| `sortAsc()`       |                                                 | Sort extracted emails list alphabetically. _[ascending]_                                                                                                                                                |
+| `sortDesc()`      |                                                 | Sort extracted emails list alphabetically. _[descending]_                                                                                                                                               |
 
 ## Author
 

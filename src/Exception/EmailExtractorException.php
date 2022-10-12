@@ -3,6 +3,7 @@
 namespace Donchev\EmailExtractor\Exception;
 
 use Exception;
+use Throwable;
 
 class EmailExtractorException extends Exception
 {
