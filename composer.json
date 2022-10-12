@@ -1,0 +1,31 @@
+{
+  "name": "donchev/email-extractor",
+  "description": "Extract valid email addresses from a string or array of strings.\nWith a few helper methods like sortAsc/sortDesc, unique,\nfilterInclude/filterExclude, lowercase/uppercase included.",
+  "keywords": [
+    "email-extractor",
+    "email",
+    "extract",
+    "extractor",
+    "eml",
+    "mail"
+  ],
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "donchev",
+      "email": "c0nt4c7@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "ext-mbstring": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Donchev\\EmailExtractor\\": "src"
+    }
+  },
+  "require-dev": {
+  }
+}
